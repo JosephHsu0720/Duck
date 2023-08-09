@@ -10,6 +10,10 @@ public class LobbyMode : MonoBehaviour
     public Toggle testToggle;
     public Text toggleText;
 
+    public Image imagePrefab;
+    public Transform imagesRoot;
+    [SerializeField] List<Image> imageList = new List<Image>();
+
     private void Start()
     {
         //PlayerPrefs.DeleteAll();
@@ -29,6 +33,19 @@ public class LobbyMode : MonoBehaviour
             {
                 Debug.LogWarning("no numberText exists");
             }
+        }
+
+        int imageCount = PlayerData.GetData<int>("int", "imageObject");
+        if (imageCount != 0)
+        {
+            for (int i = 0; i < imageCount; i++)
+            {
+                CreateImage();
+            }
+        }
+        else
+        {
+            Debug.LogWarning("no imageObject data exists");
         }
 
         if (testToggle != null)
@@ -59,9 +76,11 @@ public class LobbyMode : MonoBehaviour
         //PlayerPrefs.SetString("SavedString", numberText.text);
         PlayerData.SaveData("string", "numberText", numberText.text);
         PlayerData.SaveData("bool", "testToggle", testToggle.isOn);
+        PlayerData.SaveData("int", "imageObject", imageList.Count);
 
         Debug.Log($"playerDataSaved: {numberText.text}");
         Debug.Log($"playerDataSaved: {testToggle.isOn}");
+        Debug.Log($"playerDataSaved: {imageList.Count} imageObjects");
     }
 
     public void Clear()
@@ -81,5 +100,25 @@ public class LobbyMode : MonoBehaviour
     public void SetToggleText()
     {
         toggleText.text = testToggle.isOn.ToString();
+    }
+
+    public void CreateImage()
+    {
+        Image img = Instantiate(imagePrefab, imagesRoot);
+        img.gameObject.SetActive(true);
+        imageList.Add(img);
+    }
+
+    public void DeleteImage()
+    {
+        if (imageList.Count > 0)
+        {
+            Destroy(imageList[imageList.Count - 1].gameObject);
+            imageList.RemoveAt(imageList.Count - 1);
+        }
+        else
+        {
+            Debug.LogWarning("no imageObject exists");
+        }
     }
 }

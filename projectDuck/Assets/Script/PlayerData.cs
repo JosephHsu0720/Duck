@@ -21,6 +21,7 @@ public class PlayerData
                 PlayerPrefs.SetString(name, obj.ToString());
                 break;
         }
+        PlayerPrefs.Save();
     }
 
     static public T GetData<T>(string type, string name)
@@ -30,16 +31,16 @@ public class PlayerData
         switch (type)
         {
             case "int":
-                output = PlayerPrefs.GetInt(name);
+                output = PlayerPrefs.GetInt(name, 0);
                 break;
             case "float":
-                output = PlayerPrefs.GetFloat(name);
+                output = PlayerPrefs.GetFloat(name, 0.00f);
                 break;
             case "string":
-                output = PlayerPrefs.GetString(name);
+                output = PlayerPrefs.GetString(name, "default");
                 break;
             case "bool":
-                string boolString = PlayerPrefs.GetString(name);
+                string boolString = PlayerPrefs.GetString(name, "False");
                 output = boolString == "True" ? true : false;
                 break;
         }
