@@ -58,6 +58,7 @@ public class UIManager : MonoBehaviour
         }
 
         UIPrefabs[UIName] = lobbyUIPrefab.GetComponent<LobbyUIObject>();
+        UIStack.Add(UIName);
 
         yield return null;
         // Close Block
