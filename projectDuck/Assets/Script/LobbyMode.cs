@@ -1,15 +1,30 @@
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class LobbyMode : MonoBehaviour
+public class LobbyMode : LobbyUIObject
 {
+    static LobbyMode _instance;
+    public static LobbyMode instance
+    {
+        get
+        {
+            return _instance;
+        }
+    }
+
+    [Header("Text")]
     public Text numberText;
 
+    [Header("Toggle")]
     public Toggle testToggle;
     public Text toggleText;
 
+    [Header("Image")]
     public Image imagePrefab;
     public Transform imagesRoot;
     [SerializeField] List<Image> imageList = new List<Image>();
@@ -54,7 +69,7 @@ public class LobbyMode : MonoBehaviour
 
             testToggle.isOn = _testToggle;
             SetToggleText();
-        }        
+        }
     }
 
     public void Add()
@@ -120,5 +135,10 @@ public class LobbyMode : MonoBehaviour
         {
             Debug.LogWarning("no imageObject exists");
         }
+    }
+
+    public void Btn_OpenUI(string uiName)
+    {
+        OpenOtherUI(uiName);
     }
 }
