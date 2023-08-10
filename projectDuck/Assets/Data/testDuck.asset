@@ -10,5 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98fd16edd47b64848b07ecb1a2e8f2bb, type: 3}
-  m_Name: testData
+  m_Name: testDuck
   m_EditorClassIdentifier: 
+  data:
+    index: 0
+    name: testDuck
+    floatData: 0.2
+    boolData: 1
+    intro: This is test Duck, quack!
+    color: {r: 0.9150943, g: 0.14244394, b: 0.14244394, a: 1}
