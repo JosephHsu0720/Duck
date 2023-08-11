@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class LobbyUIObject : MonoBehaviour
 {
-    UIManager uiManager;    // ©I¥s¦¹ UI ªº Manager
-    LobbyUIObject srcUI;    // ©I¥s¦¹ UI ªº UI
+    UIManager uiManager;    // å‘¼å«æ­¤ UI çš„ Manager
+    LobbyUIObject srcUI;    // å‘¼å«æ­¤ UI çš„ UI
 
     public virtual void OpenUI(UIManager rUIManager, LobbyUIObject rSrcUI)
     {

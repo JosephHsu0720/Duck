@@ -25,9 +25,9 @@ public class UIManager : MonoBehaviour
     }
     public void OpenUI(string UIName, LobbyUIObject srcUI)
     {
-        if (UIPrefabs.ContainsKey(UIName)) // ¦³¨S¦³ UI ¸ê®Æ
+        if (UIPrefabs.ContainsKey(UIName)) // æœ‰æ²’æœ‰ UI è³‡æ–™
         {
-            UIPrefabs[UIName].transform.SetAsLastSibling(); // UI ²¾¨ì³Ì¤U­±
+            UIPrefabs[UIName].transform.SetAsLastSibling(); // UI ç§»åˆ°æœ€ä¸‹é¢
             UIPrefabs[UIName].OpenUI(this, srcUI);
 
             /*int index = UIStack.IndexOf(UIName);

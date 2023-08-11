@@ -5,8 +5,8 @@ using UnityEditor;
 
 public class CharaProfilePage : LobbyUIObject
 {
-    DuckData duckData; // ¸ê®Æ®w
-    List<ItemObject> currentDuckList = new List<ItemObject>(); // §Ú¦³ªº¸ê®Æ
+    DuckData duckData; // è³‡æ–™åº«
+    List<ItemObject> currentDuckList = new List<ItemObject>(); // æˆ‘æœ‰çš„è³‡æ–™
 
     public Transform duckRoot;
     public GameObject duckPrefab;
@@ -22,10 +22,10 @@ public class CharaProfilePage : LobbyUIObject
 
     void SetUp(DuckData duckData)
     {
-        List<Data> duckDatabase = duckData.dataList;    // ½Æ»s¤@¥÷¸ê®Æ
+        List<Data> duckDatabase = duckData.dataList;    // è¤‡è£½ä¸€ä»½è³‡æ–™
 
         List<ItemObject> oldObjs = currentDuckList;
-        if (oldObjs.Count > duckDatabase.Count)         // §R°£¦h¾l¸ê®Æ
+        if (oldObjs.Count > duckDatabase.Count)         // åˆªé™¤å¤šé¤˜è³‡æ–™
         {
             for (int d = 0; d < oldObjs.Count; d++)
             {
@@ -40,7 +40,7 @@ public class CharaProfilePage : LobbyUIObject
         for (int d = 0; d < duckDatabase.Count; d++)
         {
             GameObject newDuck;
-            if (d < oldObjs.Count) // ¦pªG¥ý«e¦³¹L³oµ§¸ê®Æ
+            if (d < oldObjs.Count)  // å¦‚æžœå…ˆå‰æœ‰éŽé€™ç­†è³‡æ–™
             {
                 newDuck = oldObjs[d].gameObject;
             }
