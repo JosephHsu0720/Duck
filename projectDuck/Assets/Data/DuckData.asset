@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98fd16edd47b64848b07ecb1a2e8f2bb, type: 3}
+  m_Name: DuckData
+  m_EditorClassIdentifier: 
+  dataList:
+  - index: 0
+    name: CallDuck
+    floatData: 1
+    boolData: 1
+    intro: A White, cute ducl.
+    color: {r: 1, g: 1, b: 1, a: 1}
+  - index: 1
+    name: Mandarin
+    floatData: 2
+    boolData: 0
+    intro: A pretty, charming duck.
+    color: {r: 0.764151, g: 0.5357532, b: 0.2559185, a: 1}
+  - index: 2
+    name: Mallard
+    floatData: 2
+    boolData: 0
+    intro: The ancient duck.
+    color: {r: 0.1713243, g: 0.4716981, b: 0.18467614, a: 1}

@@ -16,7 +16,7 @@ public class Data
 }
 
 [CreateAssetMenu(fileName = "New Data", menuName = "Create Data Asset", order = 0)]
-public class TestData : ScriptableObject
+public class DuckData : ScriptableObject
 {
-    public Data data;
+    public List<Data> dataList;
 }

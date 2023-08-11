@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class ItemObject : MonoBehaviour
 {
-    public TestData testData;
-
     [Header("ShowData")]
     public Text nameText;
     public Text introText;
@@ -14,16 +12,14 @@ public class ItemObject : MonoBehaviour
 
     private void Start()
     {
-        if (testData != null)
+        /*if (testData != null)
         {
             Show(testData);
-        }
+        }*/
     }
 
-    public void Show(TestData srcTestData)
+    public void Show(Data srcData, bool active)
     {
-        Data srcData = srcTestData.data;
-
         if (nameText != null)
         {
             nameText.text = srcData.name;
@@ -36,5 +32,7 @@ public class ItemObject : MonoBehaviour
         {
             skinImage.color = srcData.color;
         }
+
+        gameObject.SetActive(active);
     }
 }

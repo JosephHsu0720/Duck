@@ -9,13 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98fd16edd47b64848b07ecb1a2e8f2bb, type: 3}
-  m_Name: testDuck
+  m_Script: {fileID: 11500000, guid: bcd968ca90fbbed4590093b1e517b0c7, type: 3}
+  m_Name: New Data
   m_EditorClassIdentifier: 
-  data:
-    index: 0
-    name: testDuck
-    floatData: 0.2
-    boolData: 1
-    intro: This is test Duck, quack!
-    color: {r: 0.9150943, g: 0.14244394, b: 0.14244394, a: 1}
+  data2List:
+  - Int: 0
+    String: 
+    Float: 0
+    Bool: 0
+  - Int: 0
+    String: 
+    Float: 0
+    Bool: 0
