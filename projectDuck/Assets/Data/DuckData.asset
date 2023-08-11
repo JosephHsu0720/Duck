@@ -31,3 +31,9 @@ MonoBehaviour:
     boolData: 0
     intro: The ancient duck.
     color: {r: 0.1713243, g: 0.4716981, b: 0.18467614, a: 1}
+  - index: 3
+    name: Methew
+    floatData: 2
+    boolData: 0
+    intro: My pet duck.
+    color: {r: 0, g: 0.20980558, b: 0.8301887, a: 1}
