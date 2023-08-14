@@ -33,7 +33,7 @@ public class LobbyMode : LobbyUIObject
     {
         //PlayerPrefs.DeleteAll();
 
-        string _numberText = PlayerData.GetData<string>("string", "numberText");
+        string _numberText = DataManager.GetData<string>("string", "numberText");
         if (string.IsNullOrEmpty(_numberText))
         {
             Debug.LogWarning("no saved string exists");
@@ -50,7 +50,7 @@ public class LobbyMode : LobbyUIObject
             }
         }
 
-        int imageCount = PlayerData.GetData<int>("int", "imageObject");
+        int imageCount = DataManager.GetData<int>("int", "imageObject");
         if (imageCount != 0)
         {
             for (int i = 0; i < imageCount; i++)
@@ -65,7 +65,7 @@ public class LobbyMode : LobbyUIObject
 
         if (testToggle != null)
         {
-            bool _testToggle = PlayerData.GetData<bool>("bool", "testToggle");
+            bool _testToggle = DataManager.GetData<bool>("bool", "testToggle");
 
             testToggle.isOn = _testToggle;
             SetToggleText();
@@ -89,9 +89,9 @@ public class LobbyMode : LobbyUIObject
     public void Save()
     {
         //PlayerPrefs.SetString("SavedString", numberText.text);
-        PlayerData.SaveData("string", "numberText", numberText.text);
-        PlayerData.SaveData("bool", "testToggle", testToggle.isOn);
-        PlayerData.SaveData("int", "imageObject", imageList.Count);
+        DataManager.SaveData("string", "numberText", numberText.text);
+        DataManager.SaveData("bool", "testToggle", testToggle.isOn);
+        DataManager.SaveData("int", "imageObject", imageList.Count);
 
         Debug.Log($"playerDataSaved: {numberText.text}");
         Debug.Log($"playerDataSaved: {testToggle.isOn}");

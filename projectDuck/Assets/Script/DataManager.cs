@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerData
+public class DataManager
 {
     static public void SaveData(string type, string name, object obj)
     {

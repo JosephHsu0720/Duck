@@ -5,42 +5,41 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    //public Dictionary<string, bool> moveDirection = new Dictionary<string, bool>();
+    public class PlayerData
+    {
+        public enum PlayerStatus
+        {
+            Idle = 0,
+            Move = 1,
+            Action = 2
+        }
+    }
 
-    public float moveDelta;     // 位移量
-    public float moveSpeed;     // 位移速度
-
+    public Vector3 moveH;           // 位移方向(水平)
+    public Vector3 moveV;           // 位移方向(垂直)
+    public float moveSpeed;         // 位移速度
     [SerializeField] float moveVertical = 0;
     [SerializeField] float moveHorizontal = 0;
+
+    [Header("Debug RayLine")]
+    public int debugRayLength;
 
     // Start is called before the first frame update
     void Start()
     {
-        /*moveDirection.Add("up", false);
-        moveDirection.Add("down", false);
-        moveDirection.Add("left", false);
-        moveDirection.Add("right", false);*/
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        // 垂直移動
         if (Input.GetKey(KeyCode.W))
         {
-            /*if (moveDirection.TryGetValue("down", out bool down) == true)
-            {
-                moveDirection["down"] = false;
-                moveVector = new Vector3(0f, moveDelta, 0f);
-            }*/
             moveVertical = 0.1f;
         }
         else if (Input.GetKey(KeyCode.S))
         {
-            /*if (moveDirection.TryGetValue("up", out bool down) == true)
-            {
-                moveDirection["up"] = false;
-                moveVector = new Vector3(0f, -moveDelta, 0f);
-            }*/
             moveVertical = -0.1f;
         }
         else
@@ -50,20 +49,37 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A))
         {
-            //moveVector = new Vector3(-moveDelta, 0f, 0f);
             moveHorizontal = -0.1f;
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            //moveVector = new Vector3(moveDelta, 0f, 0f);
             moveHorizontal = 0.1f;
         }
         else
         {
             moveHorizontal = 0f;
         }
+        moveH = new Vector3(moveHorizontal, 0f, 0f);
+        moveV = new Vector3(0f, moveVertical, 0f);
 
-        Vector3 moveVector = new Vector3(moveHorizontal, moveVertical, 0f);
-        transform.localPosition += moveVector.normalized * moveSpeed * Time.deltaTime;
+        Ray rayH = new Ray(transform.localPosition, moveH);
+        Ray rayV = new Ray(transform.localPosition, moveV);
+
+        Debug.DrawRay(transform.localPosition, moveH.normalized * debugRayLength, Color.red);
+        Debug.DrawRay(transform.localPosition, moveV.normalized * debugRayLength, Color.blue);
+
+        if (Physics.Raycast(rayH, out RaycastHit hitH, 1))
+        {
+            Debug.Log(hitH.collider.name + hitH.distance.ToString());
+            moveH = Vector3.zero;
+        }
+        if (Physics.Raycast(rayV, out RaycastHit hitV, 1))
+        {
+            Debug.Log(hitV.collider.name + hitV.distance.ToString());
+            moveV = Vector3.zero;
+        }
+
+        Vector3 moveDir = (moveH + moveV).normalized;
+        transform.localPosition += moveDir * moveSpeed * Time.deltaTime;
     }
 }
