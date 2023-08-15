@@ -17,28 +17,37 @@ public class PlayerController : MonoBehaviour
 
     public Vector3 moveH;           // 位移方向(水平)
     public Vector3 moveV;           // 位移方向(垂直)
+    public Vector3 moveDir;         // 總位移方向
+    public Vector3 offset;
     public float moveSpeed;         // 位移速度
     [SerializeField] float moveVertical = 0;
     [SerializeField] float moveHorizontal = 0;
 
+    [Header("GetAxis")]
+    public float axisH;
+    public float axisV;
+    public float slowTime;
+
     [Header("Debug RayLine")]
     public int debugRayLength;
+
+    public static PlayerController instance;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        instance = this;
     }
 
     // Update is called once per frame
     void Update()
     {
         // 垂直移動
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S))
         {
             moveVertical = 0.1f;
         }
-        else if (Input.GetKey(KeyCode.S))
+        else if (Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.W))
         {
             moveVertical = -0.1f;
         }
@@ -46,12 +55,12 @@ public class PlayerController : MonoBehaviour
         {
             moveVertical = 0f;
         }
-
-        if (Input.GetKey(KeyCode.A))
+        // 水平移動
+        if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
         {
             moveHorizontal = -0.1f;
         }
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A))
         {
             moveHorizontal = 0.1f;
         }
@@ -59,14 +68,29 @@ public class PlayerController : MonoBehaviour
         {
             moveHorizontal = 0f;
         }
+
+        /*moveVertical = Input.GetAxis("Vertical");
+        moveHorizontal = Input.GetAxis("Horizontal");*/
+
+        /*if (Input.anyKey == false)
+        {
+            moveVertical = Mathf.Lerp(Input.GetAxis("Vertical"), 0, slowTime);
+            moveHorizontal = Mathf.Lerp(Input.GetAxis("Horizontal"), 0, slowTime);
+            if (moveVertical < 0.05f || moveHorizontal < 0.05f)
+            {
+                moveVertical = 0;
+                moveHorizontal = 0;
+            }
+        }*/
+
         moveH = new Vector3(moveHorizontal, 0f, 0f);
         moveV = new Vector3(0f, moveVertical, 0f);
 
-        Ray rayH = new Ray(transform.localPosition, moveH);
-        Ray rayV = new Ray(transform.localPosition, moveV);
+        Ray rayH = new Ray(transform.localPosition + offset, moveH);
+        Ray rayV = new Ray(transform.localPosition + offset, moveV);
 
-        Debug.DrawRay(transform.localPosition, moveH.normalized * debugRayLength, Color.red);
-        Debug.DrawRay(transform.localPosition, moveV.normalized * debugRayLength, Color.blue);
+        Debug.DrawRay(transform.localPosition + offset, moveH.normalized * debugRayLength, Color.red);
+        Debug.DrawRay(transform.localPosition + offset, moveV.normalized * debugRayLength, Color.blue);
 
         if (Physics.Raycast(rayH, out RaycastHit hitH, 1))
         {
@@ -79,7 +103,7 @@ public class PlayerController : MonoBehaviour
             moveV = Vector3.zero;
         }
 
-        Vector3 moveDir = (moveH + moveV).normalized;
-        transform.localPosition += moveDir * moveSpeed * Time.deltaTime;
+        moveDir = (moveH + moveV).normalized;
+        transform.Translate(moveDir * moveSpeed * Time.deltaTime);
     }
 }

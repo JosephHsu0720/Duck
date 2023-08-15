@@ -407,7 +407,7 @@ Transform:
   m_GameObject: {fileID: 522753940}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 8, y: 8, z: 1}
   m_Children: []
   m_Father: {fileID: 1842275700}
   m_RootOrder: 0
@@ -452,7 +452,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 3494dc956dfd7174abc07060940a2848, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3728580c149181a44b359e89f6edacae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -984,7 +984,7 @@ GameObject:
   - component: {fileID: 1678617499}
   - component: {fileID: 1678617501}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: PlayerCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1045,7 +1045,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1678617501
 MonoBehaviour:
@@ -1059,7 +1059,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a1b23261118b3746bbf036fb1bad1a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPlayer: {fileID: 1842275700}
+  target: {fileID: 1842275700}
   speed: 8
 --- !u!1 &1773000169
 GameObject:
@@ -1165,6 +1165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveH: {x: 0, y: 0, z: 0}
   moveV: {x: 0, y: 0, z: 0}
+  moveDir: {x: 0, y: 0, z: 0}
   offset: {x: 0, y: -2, z: 0}
   moveSpeed: 8
   moveVertical: 0
@@ -1665,7 +1666,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2034090220
 MonoBehaviour:
@@ -1679,7 +1680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a1b23261118b3746bbf036fb1bad1a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPlayer: {fileID: 1842275700}
+  target: {fileID: 522753941}
   speed: 8
 --- !u!20 &2034090221
 Camera:
