@@ -25,7 +25,7 @@ public class FollowCamera : MonoBehaviour
                 _transform.position = Vector3.Slerp(_transform.position, new Vector3(target.position.x, target.position.y, _transform.position.z), Mathf.Clamp01(speed * Time.deltaTime));
             }
 
-            Vector3 moveDir = PlayerController.instance.moveDir;
+            Vector3 moveDir = Player.instance.moveDir;
             if (target.gameObject.layer == 3)
             {
                 float angle = Vector3.Angle(Vector3.right, moveDir);

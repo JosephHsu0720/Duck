@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using System.Linq;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class Player : MonoBehaviour
 {
     public class PlayerData
     {
@@ -13,6 +14,14 @@ public class PlayerController : MonoBehaviour
             Move = 1,
             Action = 2
         }
+
+        public int id;
+        public string name;
+
+        public int level;
+        public int atk;
+        public int def;
+        public int hp;
     }
 
     public Vector3 moveH;           // 位移方向(水平)
@@ -31,12 +40,30 @@ public class PlayerController : MonoBehaviour
     [Header("Debug RayLine")]
     public int debugRayLength;
 
-    public static PlayerController instance;
+    public static Player instance;
+    static public UnitData playerData;
 
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
+
+        SetPlayerData();
+    }
+
+    public void SetPlayerData()
+    {
+        playerData = AssetDatabase.LoadAssetAtPath<UnitData>("Assets/Data/PlayerData.asset");
+        if (playerData == null)
+        {
+            Debug.LogError("no playerData exists");
+        }
+
+        BattleUnitData battleUnitData = new BattleUnitData();
+        battleUnitData.SetBattleUnitData(playerData.playerInfo);
+
+        BattleUnitController battleUnitController = GetComponent<BattleUnitController>();
+        battleUnitController.SetUnitData(battleUnitData);
     }
 
     // Update is called once per frame
@@ -67,6 +94,11 @@ public class PlayerController : MonoBehaviour
         else
         {
             moveHorizontal = 0f;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            
         }
 
         /*moveVertical = Input.GetAxis("Vertical");
