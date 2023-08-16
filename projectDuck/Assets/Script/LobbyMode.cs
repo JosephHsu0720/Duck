@@ -1,6 +1,3 @@
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
@@ -28,6 +25,9 @@ public class LobbyMode : LobbyUIObject
     public Image imagePrefab;
     public Transform imagesRoot;
     [SerializeField] List<Image> imageList = new List<Image>();
+
+    [Header("BGM")]
+    public AudioClip BGM;
 
     private void Start()
     {
@@ -70,6 +70,8 @@ public class LobbyMode : LobbyUIObject
             testToggle.isOn = _testToggle;
             SetToggleText();
         }
+
+        AudioManager.PlayBGM(BGM);
     }
 
     public void Add()
