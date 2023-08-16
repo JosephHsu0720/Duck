@@ -32,11 +32,6 @@ public class Player : MonoBehaviour
     [SerializeField] float moveVertical = 0;
     [SerializeField] float moveHorizontal = 0;
 
-    [Header("GetAxis")]
-    public float axisH;
-    public float axisV;
-    public float slowTime;
-
     [Header("Debug RayLine")]
     public int debugRayLength;
 
@@ -96,24 +91,8 @@ public class Player : MonoBehaviour
             moveHorizontal = 0f;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            
-        }
-
-        /*moveVertical = Input.GetAxis("Vertical");
-        moveHorizontal = Input.GetAxis("Horizontal");*/
-
-        /*if (Input.anyKey == false)
-        {
-            moveVertical = Mathf.Lerp(Input.GetAxis("Vertical"), 0, slowTime);
-            moveHorizontal = Mathf.Lerp(Input.GetAxis("Horizontal"), 0, slowTime);
-            if (moveVertical < 0.05f || moveHorizontal < 0.05f)
-            {
-                moveVertical = 0;
-                moveHorizontal = 0;
-            }
-        }*/
+        /*moveHorizontal = Input.GetAxisRaw("Horizontal");
+        moveVertical = Input.GetAxisRaw("Vertical");*/
 
         moveH = new Vector3(moveHorizontal, 0f, 0f);
         moveV = new Vector3(0f, moveVertical, 0f);
