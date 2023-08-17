@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
-public class LobbyUIObject : MonoBehaviour
+public class UIObject : MonoBehaviour
 {
     UIManager uiManager;    // 呼叫此 UI 的 Manager
-    LobbyUIObject srcUI;    // 呼叫此 UI 的 UI
+    UIObject srcUI;    // 呼叫此 UI 的 UI
 
-    public virtual void OpenUI(UIManager rUIManager, LobbyUIObject rSrcUI)
+    public virtual void OpenUI(UIManager rUIManager, UIObject rSrcUI)
     {
         uiManager = rUIManager;
         srcUI = rSrcUI;
@@ -30,5 +31,12 @@ public class LobbyUIObject : MonoBehaviour
     public void CloseUI()
     {
         gameObject.SetActive(false);
+    }
+
+    public void LoadScene(string sceneName)
+    {
+        if (sceneName == SceneManager.GetActiveScene().name) return;
+
+        SceneManager.LoadScene(sceneName);
     }
 }

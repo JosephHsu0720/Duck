@@ -21,7 +21,7 @@ public class AudioManager
             Debug.LogError($"Missing AudioClip {clip.name}");
             return;
         }
-        EazySoundManager.PlayMusic(clip, 1f, true, false);
+        EazySoundManager.PlayMusic(clip, 1f, true, true);
         BGM_Name = clip.name;
     }
 

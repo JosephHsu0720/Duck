@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-public class CharaProfilePage : LobbyUIObject
+public class CharaProfilePage : UIObject
 {
     DuckData duckData; // 資料庫
     List<ItemObject> currentDuckList = new List<ItemObject>(); // 我有的資料
@@ -11,7 +11,7 @@ public class CharaProfilePage : LobbyUIObject
     public Transform duckRoot;
     public GameObject duckPrefab;
 
-    public override void OpenUI(UIManager rUIManager, LobbyUIObject rSrcUI)
+    public override void OpenUI(UIManager rUIManager, UIObject rSrcUI)
     {
         base.OpenUI(rUIManager, rSrcUI);
 

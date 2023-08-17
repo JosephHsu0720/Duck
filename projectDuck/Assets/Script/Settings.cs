@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class Settings : LobbyUIObject
+public class Settings : UIObject
 {
     public Slider musicSlider;
     public Slider SESlider;

@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
         return instance;
     }
 
-    public Dictionary<string, LobbyUIObject> UIPrefabs = new Dictionary<string, LobbyUIObject>();
+    public Dictionary<string, UIObject> UIPrefabs = new Dictionary<string, UIObject>();
 
     [SerializeField]
     List<string> UIStack;
@@ -23,7 +23,7 @@ public class UIManager : MonoBehaviour
     {
         UIStack = new List<string>();
     }
-    public void OpenUI(string UIName, LobbyUIObject srcUI)
+    public void OpenUI(string UIName, UIObject srcUI)
     {
         if (UIPrefabs.ContainsKey(UIName)) // 有沒有 UI 資料
         {
@@ -41,7 +41,7 @@ public class UIManager : MonoBehaviour
         StartCoroutine(OpenUICoroutine(UIName, srcUI));
     }
 
-    IEnumerator OpenUICoroutine(string UIName, LobbyUIObject srcUI)
+    IEnumerator OpenUICoroutine(string UIName, UIObject srcUI)
     {
         // Open Block;
 
@@ -57,7 +57,7 @@ public class UIManager : MonoBehaviour
             rectTransform.localScale = Vector3.one;
         }
 
-        UIPrefabs[UIName] = lobbyUIPrefab.GetComponent<LobbyUIObject>();
+        UIPrefabs[UIName] = lobbyUIPrefab.GetComponent<UIObject>();
         UIStack.Add(UIName);
 
         yield return null;
