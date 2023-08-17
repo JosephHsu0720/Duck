@@ -35,12 +35,12 @@ public class CharaProfilePage : UIObject
                 }
             }
         }
-        currentDuckList = new List<ItemObject>();
+        currentDuckList = new List<ItemObject>();       // 清空舊資料
 
         for (int d = 0; d < duckDatabase.Count; d++)
         {
             GameObject newDuck;
-            if (d < oldObjs.Count)  // 如果先前有過這筆資料
+            if (d < oldObjs.Count)                      // 如果先前有過這筆資料
             {
                 newDuck = oldObjs[d].gameObject;
             }
@@ -52,7 +52,7 @@ public class CharaProfilePage : UIObject
                 newDuck.transform.localScale = Vector3.one;
             }
 
-            newDuck.GetComponent<ItemObject>().Show(duckDatabase[d], true);
+            newDuck.GetComponent<ItemObject>().ShowCharaData(duckDatabase[d], true);
             currentDuckList.Add(newDuck.GetComponent<ItemObject>());
         }
     }

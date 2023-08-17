@@ -5,17 +5,20 @@ using UnityEngine;
 
 public class ItemObject : MonoBehaviour
 {
-    [Header("ShowData")]
+    [Header("CharaProfile")]
     public Text nameText;
     public Text introText;
     public Image duckImage;
+
+    [Header("GachaPage")]
+    public Text orderText;
 
     private void Start()
     {
 
     }
 
-    public void Show(Data srcData, bool active)
+    public void ShowCharaData(Data srcData, bool active)
     {
         if (nameText != null)
         {
@@ -29,7 +32,15 @@ public class ItemObject : MonoBehaviour
         {
             duckImage.sprite = srcData.duckImage;
         }
+        gameObject.SetActive(active);
+    }
 
+    public void ShowGachaData(int order, bool active)
+    {
+        if (orderText.text != null)
+        {
+            orderText.text = order.ToString();
+        }
         gameObject.SetActive(active);
     }
 }
