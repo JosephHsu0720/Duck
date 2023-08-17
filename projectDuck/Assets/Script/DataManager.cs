@@ -47,4 +47,17 @@ public class DataManager
 
         return (T)output;
     }
+
+    static public void DeleteData(string type, string name)
+    {
+        if (PlayerPrefs.HasKey(name))
+        {
+            PlayerPrefs.DeleteKey(name);
+        }
+    }
+
+    static public void DeleteAllData()
+    {
+        PlayerPrefs.DeleteAll();
+    }
 }
