@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 [System.Serializable]
@@ -11,8 +12,8 @@ public class Data
     public bool boolData;
     [TextArea(3,5)]
     public string intro;
-    [Tooltip("duck's skin")]
-    public Color color;
+    [Tooltip("Duck Image")]
+    public Sprite duckImage;
 }
 
 [CreateAssetMenu(fileName = "New Data", menuName = "Create Data Asset", order = 0)]

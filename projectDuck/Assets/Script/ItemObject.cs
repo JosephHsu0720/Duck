@@ -8,14 +8,11 @@ public class ItemObject : MonoBehaviour
     [Header("ShowData")]
     public Text nameText;
     public Text introText;
-    public Image skinImage;
+    public Image duckImage;
 
     private void Start()
     {
-        /*if (testData != null)
-        {
-            Show(testData);
-        }*/
+
     }
 
     public void Show(Data srcData, bool active)
@@ -28,9 +25,9 @@ public class ItemObject : MonoBehaviour
         {
             introText.text = srcData.intro;
         }
-        if (skinImage != null)
+        if (duckImage != null)
         {
-            skinImage.color = srcData.color;
+            duckImage.sprite = srcData.duckImage;
         }
 
         gameObject.SetActive(active);
