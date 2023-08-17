@@ -71,7 +71,7 @@ public class LobbyMode : LobbyUIObject
             SetToggleText();
         }
 
-        AudioManager.PlayBGM(BGM);
+        AudioManager.PlayBGM_AudioClip(BGM);
     }
 
     public void Add()
