@@ -93,10 +93,13 @@ namespace Hellmade.Sound
                 UISoundsAudio = new Dictionary<int, Audio>();
                 audioPool = new Dictionary<int, Audio>();
 
+                float BGM_VOLUME = PlayerPrefs.GetInt("BGM_Volume", 0) / 100f;
+                float SE_VOLUME = PlayerPrefs.GetInt("SE_Volume", 0) / 100f;
+
                 GlobalVolume = 1;
-                GlobalMusicVolume = 1;
+                GlobalMusicVolume = BGM_VOLUME;
                 GlobalSoundsVolume = 1;
-                GlobalUISoundsVolume = 1;
+                GlobalUISoundsVolume = SE_VOLUME;
 
                 IgnoreDuplicateMusic = false;
                 IgnoreDuplicateSounds = false;

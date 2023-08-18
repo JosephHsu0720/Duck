@@ -21,7 +21,8 @@ public class AudioManager
             Debug.LogError($"Missing AudioClip {clip.name}");
             return;
         }
-        EazySoundManager.PlayMusic(clip, 1f, true, true);
+
+        BGM_AudioID = EazySoundManager.PlayMusic(clip, 1f, true, true);
         BGM_Name = clip.name;
     }
 
@@ -38,8 +39,8 @@ public class AudioManager
             Debug.LogError($"Missing AudioClip {clip.name}");
             return;
         }
-        EazySoundManager.PlayMusic(clip, 1f, true, false);
-        BGM_Name = clip.name;
+
+        EazySoundManager.PlayUISound(clip, 1f);
     }
 
     static public void PauseBGM()
@@ -60,13 +61,15 @@ public class AudioManager
         audio.Resume();
     }
 
-    static public void SetBGMVolume(float value)
+    static public void SetBGMVolume(int value)
     {
-        EazySoundManager.GlobalMusicVolume = value;
+        EazySoundManager.GlobalMusicVolume = value / (float)100;
+        DataManager.SaveData("int", "BGM_Volume", value);
     }
 
-    static public void SetSEVolume(float value)
+    static public void SetSEVolume(int value)
     {
-        EazySoundManager.GlobalUISoundsVolume = value;
+        EazySoundManager.GlobalUISoundsVolume = value / (float)100;
+        DataManager.SaveData("int", "SE_Volume", value);
     }
 }
