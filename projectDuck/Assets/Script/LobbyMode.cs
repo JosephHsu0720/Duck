@@ -32,8 +32,6 @@ public class LobbyMode : UIObject
 
     private void Start()
     {
-        //PlayerPrefs.DeleteAll();
-
         string _numberText = DataManager.GetData<string>("string", "numberText");
         if (string.IsNullOrEmpty(_numberText))
         {
@@ -138,6 +136,12 @@ public class LobbyMode : UIObject
         {
             Debug.LogWarning("no imageObject exists");
         }
+    }
+
+    public void DeleteAllData()
+    {
+        PlayerPrefs.DeleteAll();
+        Debug.Log("All data deleted");
     }
 
     public void Btn_OpenUI(string uiName)
