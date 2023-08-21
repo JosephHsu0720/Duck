@@ -6,12 +6,19 @@ using UnityEngine;
 [System.Serializable]
 public class Data
 {
+    public int index;
     public UnitType Type;
     public string name;
+
+    public int level;
+    public int ATK;
+    public int DEF;
+    public int HP;
+
     [TextArea(3,5)]
     public string intro;
-    [Tooltip("Duck Image")]
-    public Sprite duckImage;
+    [Tooltip("Unit Sprite")]
+    public Sprite unitSprite;
 }
 
 public enum UnitType
@@ -21,7 +28,7 @@ public enum UnitType
 }
 
 [CreateAssetMenu(fileName = "New Data List", menuName = "Create Data List", order = 0)]
-public class DataList : ScriptableObject
+public class UnitDataList : ScriptableObject
 {
     public List<Data> dataList;
 }
