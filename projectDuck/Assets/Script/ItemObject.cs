@@ -30,7 +30,7 @@ public class ItemObject : MonoBehaviour
         }
         if (duckImage != null)
         {
-            duckImage.sprite = srcData.duckImage;
+            duckImage.sprite = srcData.unitSprite;
         }
         gameObject.SetActive(active);
     }

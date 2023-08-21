@@ -5,7 +5,7 @@ using UnityEditor;
 
 public class CharaProfilePage : UIObject
 {
-    DuckData duckData; // 資料庫
+    UnitDataList duckData; // 資料庫
     List<ItemObject> currentDuckList = new List<ItemObject>(); // 我有的資料
 
     public Transform duckRoot;
@@ -15,12 +15,12 @@ public class CharaProfilePage : UIObject
     {
         base.OpenUI(rUIManager, rSrcUI);
 
-        duckData = AssetDatabase.LoadAssetAtPath<DuckData>("Assets/Data/DuckData.asset");
+        duckData = AssetDatabase.LoadAssetAtPath<UnitDataList>("Assets/Data/DuckData.asset");
         //Debug.Log(duckData.name);
         SetUp(duckData);
     }
 
-    void SetUp(DuckData duckData)
+    void SetUp(UnitDataList duckData)
     {
         List<Data> duckDatabase = duckData.dataList;    // 複製一份資料
 

@@ -5,7 +5,6 @@ using UnityEngine;
 public class ObjectPoolManager : MonoBehaviour
 {
     private Dictionary<string, Stack<GameObject>> pool = new Dictionary<string, Stack<GameObject>>();
-    public Transform poolRoot;
     public Transform player;
 
     public int spawnTime;
@@ -29,7 +28,7 @@ public class ObjectPoolManager : MonoBehaviour
             Debug.LogError($"Cannot find object tag: {tag}");
             return null;
         }
-        obj = GameObject.Instantiate(obj, poolRoot);
+        obj = GameObject.Instantiate(obj);
 
         PoolObject poolObject = obj.GetComponent<PoolObject>();
         poolObject.objectTag = tag;

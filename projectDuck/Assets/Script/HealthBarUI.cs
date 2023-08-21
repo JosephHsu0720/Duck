@@ -17,9 +17,11 @@ public class HealthBarUI : MonoBehaviour
 
     public void Show(int hpBarValue)
     {
-        maxHP = Player.playerData.playerInfo.hp;
-
+        maxHP = hpBarValue;
         hpBarSprite = hpBar.rectTransform.sizeDelta;
+
+        SetValue(maxHP);
+        gameObject.SetActive(true);
     }
 
     public void SetValue(int hpValue)

@@ -5,6 +5,14 @@ using UnityEngine;
 
 public class BattleSystem : MonoBehaviour
 {
+    [Header("BattleUnitUI")]
+    public Transform UIRoot;
+    public Transform unitRoot;
+
+    [Header("BattleUnitObj")]
+    //public GameObject BattleUnitPrefab;
+    public GameObject BattleUnitUIPrefab;
+
     public BattleUnitController playerUnit;
     public ObjectPoolManager objectPool;
 
@@ -29,7 +37,27 @@ public class BattleSystem : MonoBehaviour
     {
         do
         {
+            // 敵人資料
+            UnitDataList BUDList = AssetDatabase.LoadAssetAtPath<UnitDataList>("Assets/Data/EnemyData.asset");  // 資料庫
+            BattleUnitData battleUnitData = new BattleUnitData();
+            battleUnitData.SetEnemyData(BUDList.dataList, 3001);                                                // 找對應資料
+
+            // 產生角色 unit
+            // GameObject BattleUnitPrefab = Resources.Load<GameObject>("BattleUnit");
+            // GameObject unitObj = Instantiate(BattleUnitPrefab, unitRoot);
             GameObject testObj = objectPool.Spawn("poolObj");
+            testObj.name = battleUnitData.unitName;
+            testObj.transform.parent = unitRoot;
+            BattleUnitController unitController = testObj.GetComponent<BattleUnitController>();
+
+            // 產生角色 UI 血條
+            GameObject BattleUnitUIPrefab = Resources.Load<GameObject>("BattleUnitUI");
+            GameObject uiObj = Instantiate(BattleUnitUIPrefab, UIRoot);
+            uiObj.name = $"{battleUnitData.unitName}_BattleUnitUI";
+            unitController.SetBattleUnitUI(uiObj.GetComponent<BattleUnitUI>());
+
+            unitController.SetUnitData(battleUnitData);                                                         // 設定資料
+
             testObj.transform.localPosition = new Vector3(Random.Range(-3, 3), Random.Range(-3, 3), playerUnit.gameObject.transform.localPosition.z);
             yield return new WaitForSeconds(objectPool.spawnTime);
         } while (true);

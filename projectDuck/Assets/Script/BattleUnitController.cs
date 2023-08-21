@@ -5,13 +5,23 @@ using UnityEngine;
 public class BattleUnitController : MonoBehaviour
 {
     BattleUnitData unitData;
-    public HealthBarUI HealthBarUI;
+    public BattleUnitUI battleUnitUI;
+    public HealthBarUI hpBarUI;
 
     public void SetUnitData(BattleUnitData rUnitData)
     {
         unitData = rUnitData;
 
-        HealthBarUI.Show(unitData.HP);
+        hpBarUI.Show(unitData.HP);
+
+        UpdateUI();
+    }
+
+    public void SetBattleUnitUI(BattleUnitUI srcUI)
+    {
+        battleUnitUI = srcUI;
+        battleUnitUI.SetUnit(this);
+        hpBarUI = srcUI.hpBarUI;
     }
 
     public void AddHP(int value)
@@ -30,6 +40,6 @@ public class BattleUnitController : MonoBehaviour
 
     public void UpdateUI()
     {
-        HealthBarUI.SetValue(unitData.HP);
+        hpBarUI.SetValue(unitData.HP);
     }
 }

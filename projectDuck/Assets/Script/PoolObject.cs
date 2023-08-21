@@ -13,6 +13,11 @@ public class PoolObject : MonoBehaviour
     [Header("Data")]
     public float moveSpeed;
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, 0.5f);
+    }
+
     private void LateUpdate()
     {
         Vector3 dir = followTarget.position - transform.position;
