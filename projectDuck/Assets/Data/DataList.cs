@@ -6,18 +6,22 @@ using UnityEngine;
 [System.Serializable]
 public class Data
 {
-    public int index;
+    public UnitType Type;
     public string name;
-    public float floatData;
-    public bool boolData;
     [TextArea(3,5)]
     public string intro;
     [Tooltip("Duck Image")]
     public Sprite duckImage;
 }
 
-[CreateAssetMenu(fileName = "New Data", menuName = "Create Data Asset", order = 0)]
-public class DuckData : ScriptableObject
+public enum UnitType
+{
+    Ally,
+    Enemy,
+}
+
+[CreateAssetMenu(fileName = "New Data List", menuName = "Create Data List", order = 0)]
+public class DataList : ScriptableObject
 {
     public List<Data> dataList;
 }
