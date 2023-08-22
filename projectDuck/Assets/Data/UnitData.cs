@@ -13,7 +13,7 @@ public class UnitInfo
     public int def;
 }
 
-[CreateAssetMenu(fileName = "New Unit Data", menuName = "New Enemy Data", order = 2)]
+[CreateAssetMenu(fileName = "New Unit Data", menuName = "Unit Data", order = 2)]
 public class UnitData : ScriptableObject
 {
     public UnitInfo playerInfo;

@@ -27,7 +27,7 @@ public enum UnitType
     Enemy,
 }
 
-[CreateAssetMenu(fileName = "New Data List", menuName = "Create Data List", order = 0)]
+[CreateAssetMenu(fileName = "New Data List", menuName = "Data List", order = 0)]
 public class UnitDataList : ScriptableObject
 {
     public List<Data> dataList;
