@@ -730,7 +730,7 @@ GameObject:
   m_Component:
   - component: {fileID: 522753941}
   - component: {fileID: 522753942}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: PlayerMapPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -746,7 +746,7 @@ Transform:
   m_GameObject: {fileID: 522753940}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8, y: 8, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 1842275700}
   m_RootOrder: 0
@@ -791,7 +791,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 3728580c149181a44b359e89f6edacae, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9a1ab8af8c446204e989a90f18305caf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -991,7 +991,7 @@ MonoBehaviour:
   BattleUnitUIPrefab: {fileID: 5820215458300359149, guid: d5706872359209e4db8ebcd716ec54ed, type: 3}
   playerUnit: {fileID: 1842275702}
   objectPool: {fileID: 1056189941}
-  maxObjAmount: 5
+  maxObjAmount: 1
 --- !u!4 &894359407
 Transform:
   m_ObjectHideFlags: 0
@@ -1379,7 +1379,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 1625766110}
+  m_Camera: {fileID: 1678617499}
   m_PlaneDistance: 0
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -1669,13 +1669,13 @@ GameObject:
   - component: {fileID: 1625766111}
   - component: {fileID: 1625766110}
   - component: {fileID: 1625766109}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UICamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1625766109
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1694,7 +1694,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1715,7 +1715,7 @@ Camera:
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 96
+    m_Bits: 32
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1769,7 +1769,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1782,15 +1782,15 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: -10
-  far clip plane: 10
+  near clip plane: -5
+  far clip plane: 5
   field of view: 60
   orthographic: 1
   orthographic size: 5
-  m_Depth: 0
+  m_Depth: 2
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 232
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1920,13 +1920,13 @@ GameObject:
   - component: {fileID: 1773000170}
   - component: {fileID: 1773000172}
   - component: {fileID: 1773000171}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Map
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1773000170
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1993,6 +1993,8 @@ GameObject:
   - component: {fileID: 1842275699}
   - component: {fileID: 1842275698}
   - component: {fileID: 1842275702}
+  - component: {fileID: 1842275701}
+  - component: {fileID: 1842275703}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -2086,6 +2088,22 @@ Transform:
   m_Father: {fileID: 357420649}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1842275701
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842275697}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.15
 --- !u!114 &1842275702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2098,8 +2116,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c6302cfba0b3f4dba3f854cc671f6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  battleUnitUI: {fileID: 0}
+  battleUnitUI: {fileID: 2038131344}
   hpBarUI: {fileID: 452958617}
+--- !u!50 &1842275703
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842275697}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &1866578196
 GameObject:
   m_ObjectHideFlags: 0
@@ -2336,13 +2375,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1922801190}
   - component: {fileID: 1922801191}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: testBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1922801190
 Transform:
   m_ObjectHideFlags: 0
@@ -2398,7 +2437,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: bd3dba65dea687f46a2f4866a4017086, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.44705883}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2627,13 +2666,13 @@ GameObject:
   - component: {fileID: 2034090219}
   - component: {fileID: 2034090221}
   - component: {fileID: 2034090220}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MapCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2034090219
 Transform:
   m_ObjectHideFlags: 0
@@ -2642,7 +2681,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2034090218}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -20}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2671,8 +2710,8 @@ Camera:
   m_GameObject: {fileID: 2034090218}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 3
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2685,15 +2724,15 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 10
-  far clip plane: 15
+  near clip plane: -10
+  far clip plane: 10
   field of view: 60
   orthographic: 1
-  orthographic size: 3.95
-  m_Depth: 0
+  orthographic size: 5
+  m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 9
+    m_Bits: 264
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: b55cccee1a7efdb4f8fb83e883272884, type: 2}
   m_TargetDisplay: 0
@@ -2714,8 +2753,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2038131343}
+  - component: {fileID: 2038131344}
   m_Layer: 5
-  m_Name: PlayerInfo
+  m_Name: PlayerBattleUnitUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2744,6 +2784,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2038131344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038131342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5235bc1fb30bf74aacc3f8341115724, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerCamera: {fileID: 0}
+  srcUnit: {fileID: 0}
+  srcUnitTransform: {fileID: 0}
+  thisRectTransform: {fileID: 0}
+  fieldRoot: {fileID: 0}
+  hpBarUI: {fileID: 452958617}
 --- !u!1 &2054178375
 GameObject:
   m_ObjectHideFlags: 0
