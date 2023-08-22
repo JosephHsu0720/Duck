@@ -16,6 +16,8 @@ public class BattleSystem : MonoBehaviour
     public BattleUnitController playerUnit;
     public ObjectPoolManager objectPool;
 
+    public int maxObjAmount;
+
     private void Start()
     {
         UnitData unitData = Player.playerData;
@@ -35,6 +37,7 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator testSpawn()
     {
+        int n = 0;
         do
         {
             // 敵人資料
@@ -49,6 +52,7 @@ public class BattleSystem : MonoBehaviour
             testObj.name = battleUnitData.unitName;
             testObj.transform.parent = unitRoot;
             BattleUnitController unitController = testObj.GetComponent<BattleUnitController>();
+            testObj.transform.localPosition = new Vector3(Random.Range(-3, 3), Random.Range(-3, 3), playerUnit.gameObject.transform.localPosition.z);
 
             // 產生角色 UI 血條
             GameObject BattleUnitUIPrefab = Resources.Load<GameObject>("BattleUnitUI");
@@ -57,10 +61,10 @@ public class BattleSystem : MonoBehaviour
             unitController.SetBattleUnitUI(uiObj.GetComponent<BattleUnitUI>());
 
             unitController.SetUnitData(battleUnitData);                                                         // 設定資料
+            n++;
 
-            testObj.transform.localPosition = new Vector3(Random.Range(-3, 3), Random.Range(-3, 3), playerUnit.gameObject.transform.localPosition.z);
             yield return new WaitForSeconds(objectPool.spawnTime);
-        } while (true);
+        } while (n < maxObjAmount);
     }
 
     public void DoDamage(BattleUnitController targetUnit, int damage)

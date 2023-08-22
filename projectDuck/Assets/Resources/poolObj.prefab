@@ -112,7 +112,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c6302cfba0b3f4dba3f854cc671f6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthBarUI: {fileID: 0}
+  battleUnitUI: {fileID: 0}
+  hpBarUI: {fileID: 0}
 --- !u!222 &4751266611815204716
 CanvasRenderer:
   m_ObjectHideFlags: 0

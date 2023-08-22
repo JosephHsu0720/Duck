@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BattleUnitUI : MonoBehaviour
 {
-    public Camera UICamera;
+    public Camera PlayerCamera;
 
     [SerializeField] BattleUnitController srcUnit = null;
     [SerializeField] Transform srcUnitTransform;
@@ -13,34 +13,35 @@ public class BattleUnitUI : MonoBehaviour
 
     public HealthBarUI hpBarUI;
 
-    bool isSetPos = false;
+    bool initial = false;
 
     public void SetUnit(BattleUnitController targetUnit)
     {
         srcUnit = targetUnit;
         srcUnitTransform = srcUnit.transform;
         thisRectTransform = GetComponent<RectTransform>();
-        fieldRoot = transform.parent.GetComponent<RectTransform>();
+        fieldRoot = transform.parent.parent.GetComponent<RectTransform>();
+        PlayerCamera = Camera.main;
 
-        SetUIPos();
+        SetUP();
     }
 
-    void SetUIPos()
+    void SetUP()
     {
-        Vector2 screenPos = Camera.main.WorldToScreenPoint(srcUnitTransform.position);
-        thisRectTransform.position = screenPos;
+        Vector2 screenPos = Camera.main.WorldToScreenPoint(srcUnitTransform.position); // 敵人圖片轉螢幕座標
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(fieldRoot, screenPos, PlayerCamera, out Vector2 localPoint);
+        thisRectTransform.localPosition = new Vector2(localPoint.x, localPoint.y + 60f);
+
+        initial = true;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
-        if (Camera.main && srcUnit && isSetPos)
+        if (Camera.main && srcUnit && initial)
         {
-            /*Vector2 screenPos = Camera.main.WorldToScreenPoint(srcUnitTransform.position); // 敵人圖片轉螢幕座標
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(fieldRoot, screenPos, Camera.main, out Vector2 localPoint);
-            thisRectTransform.localPosition = localPoint;*/
-
-            Vector2 screenPos = Camera.main.WorldToScreenPoint(srcUnitTransform.position);
-            thisRectTransform.position = screenPos;
+            Vector2 screenPos = PlayerCamera.WorldToScreenPoint(srcUnitTransform.position); // 敵人圖片轉螢幕座標
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(fieldRoot, screenPos, PlayerCamera, out Vector2 localPoint);
+            thisRectTransform.localPosition = new Vector2(localPoint.x, localPoint.y + 60f);
         }
     }
 }

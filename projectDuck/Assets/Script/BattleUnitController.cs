@@ -20,8 +20,8 @@ public class BattleUnitController : MonoBehaviour
     public void SetBattleUnitUI(BattleUnitUI srcUI)
     {
         battleUnitUI = srcUI;
-        battleUnitUI.SetUnit(this);
         hpBarUI = srcUI.hpBarUI;
+        battleUnitUI.SetUnit(this);
     }
 
     public void AddHP(int value)
