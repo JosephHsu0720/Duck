@@ -1668,7 +1668,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1625766111}
   - component: {fileID: 1625766110}
-  - component: {fileID: 1625766109}
   m_Layer: 5
   m_Name: UICamera
   m_TagString: Untagged
@@ -1676,14 +1675,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!81 &1625766109
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1625766108}
-  m_Enabled: 1
 --- !u!20 &1625766110
 Camera:
   m_ObjectHideFlags: 0
@@ -1752,6 +1743,7 @@ GameObject:
   - component: {fileID: 1678617500}
   - component: {fileID: 1678617499}
   - component: {fileID: 1678617501}
+  - component: {fileID: 1678617498}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: MainCamera
@@ -1759,6 +1751,14 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!81 &1678617498
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678617497}
+  m_Enabled: 1
 --- !u!20 &1678617499
 Camera:
   m_ObjectHideFlags: 0
