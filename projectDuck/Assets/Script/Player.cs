@@ -80,7 +80,7 @@ public class Player : MonoBehaviour
         battleUnitData.SetPlayerData(playerData.playerInfo);
 
         BattleUnitController battleUnitController = GetComponent<BattleUnitController>();
-        battleUnitController.SetUnitData(battleUnitData);
+        if (battleUnitController != null) battleUnitController.SetUnitData(battleUnitData);
     }
 
     private void OnDrawGizmos()

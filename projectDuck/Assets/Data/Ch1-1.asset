@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 379a3d84452b3334a8f2e311b1ddcad9, type: 3}
+  m_Name: Ch1-1
+  m_EditorClassIdentifier: 
+  storyInfo:
+    chapter: "\u7B2C\u4E00\u7AE0"
+    episode: "\u7B2C\u4E00\u8A71"
+    senarios:
+    - name: 1
+      Left_name: "\u6751\u6C11A"
+      Left_Image: {fileID: 0}
+      Right_name: 
+      Right_Image: {fileID: 0}
+      content: "\u7267\u5E2BB\uFF0C\u6211\u60F3\u8981\u627E\u4F60\u804A\u4E00\u804A......"
+    - name: 2
+      Left_name: 
+      Left_Image: {fileID: 0}
+      Right_name: "\u7267\u5E2BB"
+      Right_Image: {fileID: 0}
+      content: "\u89AA\u611B\u7684\u6751\u6C11\uFF0C\u767C\u751F\u4E86\u4EC0\u9EBC\u4E8B\u60C5\u55CE\uFF1F"
+    - name: 3
+      Left_name: "\u6751\u6C11A"
+      Left_Image: {fileID: 0}
+      Right_name: 
+      Right_Image: {fileID: 0}
+      content: "\u4E8B\u60C5\u662F\u9019\u6A23\u7684\uFF0C\u6211\u5BB6\u7684\u725B\u4ECA\u5929\u65E9\u4E0A\u4E0D\u898B\u4E86\u3002"
+    - name: 4
+      Left_name: "\u6751\u6C11A"
+      Left_Image: {fileID: 0}
+      Right_name: 
+      Right_Image: {fileID: 0}
+      content: "\u6211\u627E\u904D\u4E86\u5BB6\u88E1\u548C\u5916\u9762\u7684\u8FB2\u7530\uFF0C\u751A\u81F3\u662F\u6574\u500B\u6751\u838A\uFF0C\n\u90FD\u6C92\u6709\u898B\u5230\u6211\u5BB6\u611B\u725B\u7684\u8EAB\u5F71
+        :("
