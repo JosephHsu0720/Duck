@@ -34,6 +34,7 @@ public class BattleUnitController : MonoBehaviour
             Debug.Log("Dead");
             unitData.HP = 0;
         }
+        UpdateUI();
 
         Debug.Log($"{originHP} -> {unitData.HP}");
     }

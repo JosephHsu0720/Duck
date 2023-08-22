@@ -37,7 +37,7 @@ public class BattleUnitUI : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (Camera.main && srcUnit && initial)
+        if (PlayerCamera && srcUnit && initial)
         {
             Vector2 screenPos = PlayerCamera.WorldToScreenPoint(srcUnitTransform.position); // 敵人圖片轉螢幕座標
             RectTransformUtility.ScreenPointToLocalPointInRectangle(fieldRoot, screenPos, PlayerCamera, out Vector2 localPoint);

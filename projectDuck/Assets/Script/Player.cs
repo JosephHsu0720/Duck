@@ -32,6 +32,9 @@ public class Player : MonoBehaviour
     [SerializeField] float moveVertical = 0;
     [SerializeField] float moveHorizontal = 0;
 
+    bool canMove = true;
+    bool isDash = false;
+
     [Header("Debug RayLine")]
     public int debugRayLength;
 
@@ -44,6 +47,25 @@ public class Player : MonoBehaviour
         instance = this;
 
         SetPlayerData();
+    }
+
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.collider.tag == "Enemy")
+    //    {
+    //        Debug.Log(collision.collider.name);
+    //    }
+    //}
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        BattleUnitController unitController = GetComponent<BattleUnitController>();
+
+        if (collision.tag == "Enemy")
+        {
+            Debug.Log(collision.name);
+            unitController.AddHP(-15);
+        }
     }
 
     public void SetPlayerData()
@@ -63,37 +85,50 @@ public class Player : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position, 1);
+        Gizmos.DrawWireSphere(transform.position, 0.45f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        // 垂直移動
-        if (Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S))
+        if (canMove)
         {
-            moveVertical = 0.1f;
-        }
-        else if (Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.W))
-        {
-            moveVertical = -0.1f;
-        }
-        else
-        {
-            moveVertical = 0f;
-        }
-        // 水平移動
-        if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
-        {
-            moveHorizontal = -0.1f;
-        }
-        else if (Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A))
-        {
-            moveHorizontal = 0.1f;
-        }
-        else
-        {
-            moveHorizontal = 0f;
+            // 垂直移動
+            if (Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S))
+            {
+                moveVertical = 0.1f;
+            }
+            else if (Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.W))
+            {
+                moveVertical = -0.1f;
+            }
+            else
+            {
+                moveVertical = 0f;
+            }
+            // 水平移動
+            if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+            {
+                moveHorizontal = -0.1f;
+            }
+            else if (Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A))
+            {
+                moveHorizontal = 0.1f;
+            }
+            else
+            {
+                moveHorizontal = 0f;
+            }
+            // 衝刺(Dash)
+            if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
+            {
+                if (!isDash)
+                {
+                    isDash = true;
+                    canMove = false;
+                    StartCoroutine(Dash(moveSpeed, moveSpeed * 5));
+                }
+            }
         }
 
         /*moveHorizontal = Input.GetAxisRaw("Horizontal");
@@ -106,31 +141,27 @@ public class Player : MonoBehaviour
         //RaycastHit2D hit2D_H = Physics2D.Raycast(transform.position, moveH.normalized);
         //RaycastHit2D hit2D_V = Physics2D.Raycast(transform.position, moveV.normalized);
 
-        // CircleCast
-        RaycastHit2D circleHit2D = Physics2D.CircleCast(transform.position, 1f, moveH.normalized);
-        Physics2D.IgnoreLayerCollision(6, 6);
-
         //Debug.DrawRay(transform.localPosition + offset, moveH.normalized * debugRayLength, Color.red);
         //Debug.DrawRay(transform.localPosition + offset, moveV.normalized * debugRayLength, Color.blue);
 
-        if (circleHit2D)
-        {
-            Debug.Log(circleHit2D.collider.name);
-        }
-
-        /*
-        if (hit2D_H)
-        {
-            Debug.Log(hit2D_H.collider.name);
-            //moveH = Vector2.zero;
-        }
-        if (hit2D_V)
-        {
-            Debug.Log(hit2D_V.collider.name);
-            //moveV = Vector2.zero;
-        }*/
+        // CircleCast
+        //RaycastHit2D circleHit2D = Physics2D.CircleCast(transform.position, 0.45f, Vector2.zero);
+        //if (circleHit2D && circleHit2D.collider.tag == "Enemy")
+        //{
+        //    Debug.Log(circleHit2D.collider.name);
+        //}
 
         moveDir = (moveH + moveV).normalized;
         transform.Translate(moveDir * moveSpeed * Time.deltaTime);
+    }
+
+    IEnumerator Dash(float oldSpeed, float newSpeed)
+    {
+        moveSpeed = newSpeed;
+        yield return new WaitForSecondsRealtime(0.2f);
+        moveSpeed = oldSpeed;
+
+        isDash = false;
+        canMove = true;
     }
 }

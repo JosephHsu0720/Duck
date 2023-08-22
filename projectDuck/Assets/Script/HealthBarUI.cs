@@ -29,10 +29,7 @@ public class HealthBarUI : MonoBehaviour
         scaleRate = (float)hpValue / maxHP;
         hpBar.rectTransform.sizeDelta = new Vector2(Mathf.Max(0f, hpBarSprite.x * scaleRate), hpBarSprite.y);
 
-        if (hpValue > 0)
-        {
-            StartCoroutine("SetHPAnimation");
-        }
+        StartCoroutine("SetHPAnimation");
     }
 
     IEnumerator SetHPAnimation()
