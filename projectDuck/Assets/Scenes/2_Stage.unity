@@ -2015,6 +2015,7 @@ MonoBehaviour:
   content: {fileID: 2027986790}
   playSpeed: 1
   skip: 0
+  storyState: 0
 --- !u!4 &1781845844
 Transform:
   m_ObjectHideFlags: 0

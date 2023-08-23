@@ -14,8 +14,8 @@ public class StoryManager : MonoBehaviour
     public Text content;
 
     [Header("Parameter")]
-    [Range(0, 2)][Tooltip("¼½©ñ³t«×")] public float playSpeed;
-    [Tooltip("¬O§_¸õ¹L")] public bool skip;
+    [Range(0, 2)][Tooltip("æ’­æ”¾é€Ÿåº¦")] public float playSpeed;
+    [Tooltip("æ˜¯å¦è·³é")] public bool skip;
 
     // instance
     static StoryManager instance;
@@ -26,23 +26,30 @@ public class StoryManager : MonoBehaviour
 
     // senario data
     List<StoryInfo.Senario> senarios;
-    int index = 0;
+    int storyIndex = 0;
+    public State storyState;
+
+    public enum State
+    {
+        unPlay,
+        Playing,
+        Played
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         senarios = storyData.storyInfo.senarios;
-
-        if (senarios != null) SetDialog(index);
+        storyState = State.unPlay;
+        // if (senarios != null) SetDialog(index);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) || Input.GetAxis("Mouse ScrollWheel") < 0)
         {
-            index++;
-            SetDialog(index);
+            SetDialog(storyIndex);
         }
     }
 
@@ -54,15 +61,42 @@ public class StoryManager : MonoBehaviour
         }
         else
         {
-            leftChara.text = senarios[index].Left_name;
-            rightChara.text = senarios[index].Right_name;
-            //content.text = senarios[index].content;
-            StartCoroutine(ShowDialog(senarios[index].content));
+            switch (storyState)
+            {
+                case State.Played:          // é¡¯ç¤ºå®Œç•¢
+                    {
+                        storyIndex++;
+                        storyState = State.unPlay;
+                        SetDialog(storyIndex);
+                        break;
+                    }
+                case State.Playing:         // é€å­—é¡¯ç¤ºä¸­
+                    {
+                        StopAllCoroutines();
+
+                        string showText = senarios[index].content;
+                        content.text = showText;
+                        storyState = State.Played;
+                        break;
+                    }
+                case State.unPlay:          // å°šæœªé¡¯ç¤º
+                    {
+                        leftChara.text = senarios[index].Left_name;
+                        rightChara.text = senarios[index].Right_name;
+                        storyState = State.Playing;
+                        StartCoroutine(ShowDialog(senarios[index].content));
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
         }
     }
 
     /// <summary>
-    /// ³v¦r¼½©ñ¤å¥»
+    /// é€å­—æ’­æ”¾æ–‡æœ¬
     /// </summary>
     IEnumerator ShowDialog(string dialog)
     {
@@ -73,6 +107,7 @@ public class StoryManager : MonoBehaviour
             content.text = showText;
             yield return new WaitForSeconds(0.1f / playSpeed);
         }
+        storyState = State.Played;
         yield return null;
     }
 
