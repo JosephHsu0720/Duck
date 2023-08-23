@@ -33,7 +33,8 @@ public class StoryManager : MonoBehaviour
     {
         unPlay,
         Playing,
-        Played
+        Played,
+        Auto
     }
 
     // Start is called before the first frame update
@@ -50,6 +51,10 @@ public class StoryManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0) || Input.GetAxis("Mouse ScrollWheel") < 0)
         {
             SetDialog(storyIndex);
+        }
+        if (skip && storyState != State.Auto)
+        {
+            StartCoroutine(AutoShowDialog(storyIndex));
         }
     }
 
@@ -87,6 +92,12 @@ public class StoryManager : MonoBehaviour
                         StartCoroutine(ShowDialog(senarios[index].content));
                         break;
                     }
+                case  State.Auto:           // 自動顯示
+                    {
+                        string showText = senarios[index].content;
+                        content.text = showText;
+                        break;
+                    }
                 default:
                     {
                         break;
@@ -108,6 +119,19 @@ public class StoryManager : MonoBehaviour
             yield return new WaitForSeconds(0.1f / playSpeed);
         }
         storyState = State.Played;
+        yield return null;
+    }
+
+    IEnumerator AutoShowDialog(int index) // 以當時進度的編號開始
+    {
+        storyState = State.Auto;
+        for (; index < senarios.Count; index++)
+        {
+            SetDialog(index);
+            yield return new WaitForSeconds(0.5f);
+        }
+        skip = false;
+        Debug.Log("Dialog End");
         yield return null;
     }
 
