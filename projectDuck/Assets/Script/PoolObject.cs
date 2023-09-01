@@ -3,15 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoolObject : MonoBehaviour
+public class PoolObject : FollowObject
 {
     public event Action<GameObject> RecycleEvent;
 
     public string objectTag;
-    public Transform followTarget;
-
-    [Header("Data")]
-    public float moveSpeed;
 
     private void OnDrawGizmos()
     {
@@ -39,8 +35,9 @@ public class PoolObject : MonoBehaviour
 
     private void Update()
     {
-        Vector3 dir = followTarget.position - transform.position;
-        transform.Translate(dir.normalized * moveSpeed * Time.deltaTime);
+        FollowOn();
+        //Vector3 dir = followTarget.position - transform.position;
+        //transform.Translate(dir.normalized * moveSpeed * Time.deltaTime);
 
         // CircleCast
         //RaycastHit2D circleHit2D = Physics2D.CircleCast(transform.position, 0.45f, Vector2.zero);
