@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ObjectPoolManager : MonoBehaviour
 {
+    public BulletTypeDictionary bulletDictionary;
+
     private Dictionary<string, Stack<GameObject>> pool = new Dictionary<string, Stack<GameObject>>();
     public Transform player;
 
@@ -31,9 +33,7 @@ public class ObjectPoolManager : MonoBehaviour
         obj = GameObject.Instantiate(obj);
 
         PoolObject poolObject = obj.GetComponent<PoolObject>();
-        poolObject.objectTag = tag;
-        poolObject.followTarget = player;
-        poolObject.RecycleEvent += Despawn;
+        poolObject.SetUp(tag, player, Despawn);
 
         return obj;
     }

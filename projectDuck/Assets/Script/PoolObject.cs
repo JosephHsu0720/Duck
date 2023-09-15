@@ -5,8 +5,12 @@ using UnityEngine;
 
 public class PoolObject : FollowObject
 {
-    public event Action<GameObject> RecycleEvent;
+    public class MyBullets
+    {
+        public List<BulletData> BulletDatas;
+    }
 
+    public event Action<GameObject> RecycleEvent;
     public string objectTag;
 
     private void OnDrawGizmos()
@@ -21,6 +25,13 @@ public class PoolObject : FollowObject
     //        Debug.Log(collision.collider.name);
     //    }
     //}
+
+    public void SetUp(string tag, Transform target, Action<GameObject> destroyCB)
+    {
+        objectTag = tag;
+        followTarget = target;
+        RecycleEvent = destroyCB;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
