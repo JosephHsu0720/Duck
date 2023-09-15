@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f95e7fef3d59ab4d8d49339b6404f01, type: 3}
+  m_Name: BulletDictionary
+  m_EditorClassIdentifier: 
+  bulletInfos:
+  - name: Test_001
+    bulletType: 0
+    duration: 5
+    delayTime: 0
+    interval: 1
+    bulletInfo: "\u6BCF1\u79D2\u767C\u5C041\u9846\u5B50\u5F48\u3002"
+  - name: Test_002
+    bulletType: 0
+    duration: 10
+    delayTime: 1
+    interval: 2
+    bulletInfo: "\u5EF6\u90721\u79D2\u5F8C\uFF0C\u6BCF2\u79D2\u767C\u5C04\u4E00\u9846\u5B50\u5F48\u3002"

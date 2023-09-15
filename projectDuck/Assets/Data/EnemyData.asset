@@ -20,6 +20,7 @@ MonoBehaviour:
     ATK: 10
     DEF: 10
     HP: 100
+    mybullet: []
     intro: test
     unitSprite: {fileID: 0}
   - index: 3002
@@ -29,5 +30,6 @@ MonoBehaviour:
     ATK: 15
     DEF: 10
     HP: 80
+    mybullet: []
     intro: normal
     unitSprite: {fileID: 0}

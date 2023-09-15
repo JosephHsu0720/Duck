@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine;
 
 [System.Serializable]
@@ -14,6 +13,8 @@ public class Data
     public int ATK;
     public int DEF;
     public int HP;
+
+    public List<string> mybullet;
 
     [TextArea(3,5)]
     public string intro;
@@ -31,4 +32,30 @@ public enum UnitType
 public class UnitDataList : ScriptableObject
 {
     public List<Data> dataList;
+
+    private void OnValidate()
+    {
+        //List<BulletData> bulletInfos = BulletTypeDictionary.bulletInfos;
+
+        //string generatedTag = "public enum MyBullets{";
+        //for (int i = 0; i < bulletInfos.Count; i++)
+        //{
+        //    generatedTag += $"{bulletInfos[i].name},";
+        //}
+        //generatedTag += "}";
+
+        //string relativePath = Application.dataPath + @"/Data/";
+        //string fileName = "UnitDataList.cs";
+        //string tempPath = relativePath + fileName;
+
+        //if (!Directory.Exists(relativePath))
+        //{
+        //    Directory.CreateDirectory(relativePath);
+        //}
+        //using (StreamWriter file = new StreamWriter(tempPath))
+        //{
+        //    file.WriteLine(generatedTag);
+        //}
+        //UnityEditor.AssetDatabase.ImportAsset(tempPath);
+    }
 }

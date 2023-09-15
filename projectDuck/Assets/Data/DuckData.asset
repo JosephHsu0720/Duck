@@ -14,26 +14,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dataList:
   - index: 0
+    Type: 0
     name: CallDuck
-    floatData: 1
-    boolData: 1
+    level: 0
+    ATK: 0
+    DEF: 0
+    HP: 0
+    mybullet: []
     intro: White duck.
-    duckImage: {fileID: 21300000, guid: ebdfcbc03abd0214db10659c169ed926, type: 3}
+    unitSprite: {fileID: 0}
   - index: 1
+    Type: 0
     name: Mandarin
-    floatData: 2
-    boolData: 0
+    level: 0
+    ATK: 0
+    DEF: 0
+    HP: 0
+    mybullet: []
     intro: Charming duck.
-    duckImage: {fileID: 21300000, guid: 7a56b5d6694f3224c9c7b634baf9ac96, type: 3}
+    unitSprite: {fileID: 0}
   - index: 2
+    Type: 0
     name: Mallard
-    floatData: 2
-    boolData: 0
+    level: 0
+    ATK: 0
+    DEF: 0
+    HP: 0
+    mybullet: []
     intro: Ancient duck.
-    duckImage: {fileID: 21300000, guid: b3b093b34357a244a836134dab3fad6f, type: 3}
+    unitSprite: {fileID: 0}
   - index: 3
+    Type: 0
     name: Metthew
-    floatData: 2
-    boolData: 0
+    level: 0
+    ATK: 0
+    DEF: 0
+    HP: 0
+    mybullet: []
     intro: Pet duck.
-    duckImage: {fileID: 21300000, guid: 7cd174c6552d0e642accea58bb2a00c3, type: 3}
+    unitSprite: {fileID: 0}

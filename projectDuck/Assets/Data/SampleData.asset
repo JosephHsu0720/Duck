@@ -12,10 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98fd16edd47b64848b07ecb1a2e8f2bb, type: 3}
   m_Name: SampleData
   m_EditorClassIdentifier: 
-  data:
-    index: 1
-    name: CallDuck
-    floatData: 0.1
-    boolData: 0
-    intro: A white, cute callduck.
-    color: {r: 1, g: 1, b: 1, a: 1}
+  dataList: []
