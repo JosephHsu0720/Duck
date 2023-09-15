@@ -1309,6 +1309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2902000b8068ed243bde2d75fd4aa56e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletDictionary: {fileID: 11400000, guid: 4d45678d19d45c24ba1b527beb6505f2, type: 2}
   player: {fileID: 1842275700}
   spawnTime: 1
 --- !u!1 &1057324445
