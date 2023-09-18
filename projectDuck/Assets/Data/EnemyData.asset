@@ -15,21 +15,21 @@ MonoBehaviour:
   dataList:
   - index: 3001
     Type: 1
-    name: test enemy
-    level: 1
-    ATK: 10
-    DEF: 10
+    name: 3001
+    SPD: 0.6
+    ATK: 1
     HP: 100
-    mybullet: []
+    mybullet:
+    - Test_001
     intro: test
     unitSprite: {fileID: 0}
   - index: 3002
     Type: 1
-    name: Normal Bat
-    level: 5
+    name: 3002
+    SPD: 0.2
     ATK: 15
-    DEF: 10
     HP: 80
-    mybullet: []
+    mybullet:
+    - Test_002
     intro: normal
     unitSprite: {fileID: 0}

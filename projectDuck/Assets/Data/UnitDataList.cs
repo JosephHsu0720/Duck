@@ -9,9 +9,8 @@ public class Data
     public UnitType Type;
     public string name;
 
-    public int level;
+    public float SPD;
     public int ATK;
-    public int DEF;
     public int HP;
 
     public List<string> mybullet;
