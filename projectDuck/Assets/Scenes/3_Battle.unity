@@ -1309,7 +1309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2902000b8068ed243bde2d75fd4aa56e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletDictionary: {fileID: 11400000, guid: 4d45678d19d45c24ba1b527beb6505f2, type: 2}
+  enemyData: {fileID: 11400000, guid: 8ebd4f8e4c5217b419356721e20becf2, type: 2}
   player: {fileID: 1842275700}
   spawnTime: 1
 --- !u!1 &1057324445
@@ -2065,6 +2065,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1773000169}
   m_CullTransparentMesh: 1
+--- !u!1 &1776962638
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1776962639}
+  m_Layer: 0
+  m_Name: BulletLauncher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1776962639
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776962638}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1842275700}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1842275697
 GameObject:
   m_ObjectHideFlags: 0
@@ -2076,6 +2106,7 @@ GameObject:
   - component: {fileID: 1842275700}
   - component: {fileID: 1842275699}
   - component: {fileID: 1842275698}
+  - component: {fileID: 1842275704}
   - component: {fileID: 1842275702}
   - component: {fileID: 1842275701}
   - component: {fileID: 1842275703}
@@ -2098,14 +2129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26d0ff9f74e412542aa1910910dcb01f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveH: {x: 0, y: 0}
-  moveV: {x: 0, y: 0}
-  moveDir: {x: 0, y: 0}
-  offset: {x: 0, y: 0, z: 0}
-  moveSpeed: 3
-  moveVertical: 0
-  moveHorizontal: 0
-  debugRayLength: 1
+  moveController: {fileID: 1842275704}
 --- !u!212 &1842275699
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2169,6 +2193,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 522753941}
+  - {fileID: 1776962639}
   m_Father: {fileID: 357420649}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2223,6 +2248,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1842275704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842275697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbfa8828e7d36b84dab4e89616c756db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controlTarget: {fileID: 1842275700}
+  moveH: {x: 0, y: 0}
+  moveV: {x: 0, y: 0}
+  moveDir: {x: 0, y: 0}
+  offset: {x: 0, y: 0, z: 0}
+  moveSpeed: 5
+  moveVertical: 0
+  moveHorizontal: 0
+  debugRayLength: 0
 --- !u!1 &1866578196
 GameObject:
   m_ObjectHideFlags: 0
@@ -2837,6 +2883,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followTarget: {fileID: 1842275700}
   moveSpeed: 0.4
+  needToFollow: 0
 --- !u!1 &2034090218
 GameObject:
   m_ObjectHideFlags: 0

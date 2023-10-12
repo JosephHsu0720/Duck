@@ -19,3 +19,6 @@ MonoBehaviour:
     hp: 100
     atk: 10
     def: 5
+    myBullet:
+    - Test_001
+    - Test_002
