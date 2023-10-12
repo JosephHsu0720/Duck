@@ -8,6 +8,11 @@ public class BattleUnitController : MonoBehaviour
     public BattleUnitUI battleUnitUI;
     public HealthBarUI hpBarUI;
 
+    public void DoAction()
+    {
+
+    }
+
     public void SetUnitData(BattleUnitData rUnitData)
     {
         unitData = rUnitData;

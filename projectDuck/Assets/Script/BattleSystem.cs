@@ -48,7 +48,7 @@ public class BattleSystem : MonoBehaviour
             // 產生角色 unit
             // GameObject BattleUnitPrefab = Resources.Load<GameObject>("BattleUnit");
             // GameObject unitObj = Instantiate(BattleUnitPrefab, unitRoot);
-            GameObject testObj = objectPool.Spawn("poolObj");
+            GameObject testObj = objectPool.Spawn("3001");
             testObj.name = battleUnitData.unitName;
             testObj.transform.parent = unitRoot;
             BattleUnitController unitController = testObj.GetComponent<BattleUnitController>();

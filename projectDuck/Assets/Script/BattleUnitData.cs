@@ -9,6 +9,7 @@ public class BattleUnitData
     static public string unitType;  // 敵人專用
 
     public int level;
+    public float SPD;
     public int ATK;
     public int DEF;
     public int HP;
@@ -36,11 +37,10 @@ public class BattleUnitData
         {
             id = unitData.index;
             unitName = unitData.name;
-            unitType = unitData.Type.ToString();
+            unitType = unitData.unitType.ToString();
 
-            level = unitData.level;
+            SPD = unitData.SPD;
             ATK = unitData.ATK;
-            DEF = unitData.DEF;
             HP = unitData.HP;
         }
     }

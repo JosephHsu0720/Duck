@@ -4,36 +4,46 @@ using UnityEngine;
 
 public class ObjectPoolManager : MonoBehaviour
 {
-    public BulletTypeDictionary bulletDictionary;
+    public static ObjectPoolManager instance;
+
+    public static BulletTypeDictionary bulletDictionary;
+    public UnitDataList enemyData;
 
     private Dictionary<string, Stack<GameObject>> pool = new Dictionary<string, Stack<GameObject>>();
     public Transform player;
 
     public int spawnTime;
 
-    public GameObject Spawn(string tag)
+    private void Start()
+    {
+        instance = this;
+    }
+
+    public GameObject Spawn(string name)
     {
         GameObject obj;
 
-        // ¦pªG¸Óª«¥ó¤w³Qµn¿ı¥B¸Ó¦À¤l¸ÌÁÙ¦³³Ñ¾l
-        if (pool.TryGetValue(tag, out Stack<GameObject> stack) && stack.Count > 0)
+        // å¦‚æœè©²ç‰©ä»¶å·²è¢«ç™»éŒ„ä¸”è©²æ± å­è£¡é‚„æœ‰å‰©é¤˜
+        if (pool.TryGetValue(name, out Stack<GameObject> stack) && stack.Count > 0)
         {
             obj = stack.Pop();
             obj.SetActive(true);
             return obj;
         }
 
-        // ¨S¦³ªº¸Üª½±µ¥Í¦¨·sªº ¦b Despawn µn¿ı
-        obj = Resources.Load<GameObject>(tag);
+        // æ²’æœ‰çš„è©±ç›´æ¥ç”Ÿæˆæ–°çš„ åœ¨ Despawn ç™»éŒ„
+        obj = Resources.Load<GameObject>(name);
         if (obj == null)
         {
-            Debug.LogError($"Cannot find object tag: {tag}");
+            Debug.LogError($"Cannot find object tag: {name}");
             return null;
         }
         obj = GameObject.Instantiate(obj);
 
         PoolObject poolObject = obj.GetComponent<PoolObject>();
-        poolObject.SetUp(tag, player, Despawn);
+
+        Data objectData = enemyData.dataList.Find(x => x.name == name);
+        poolObject.SetUp(name, objectData, player, Despawn);
 
         return obj;
     }
@@ -42,18 +52,18 @@ public class ObjectPoolManager : MonoBehaviour
     {
         obj.SetActive(false);
 
-        string tag = obj.GetComponent<PoolObject>().objectTag;
+        string name = obj.GetComponent<PoolObject>().objectName;
 
-        // ¦pªG¸Óª«¥ó¥¼³Qµn¿ı -> µn³°¸Óª«¥ó¨Ã·s¼W¸Óª«¥ó¸s
-        if (!pool.TryGetValue(tag, out Stack<GameObject> stack))
+        // å¦‚æœè©²ç‰©ä»¶æœªè¢«ç™»éŒ„ -> ç™»é™¸è©²ç‰©ä»¶ä¸¦æ–°å¢è©²ç‰©ä»¶ç¾¤
+        if (!pool.TryGetValue(name, out Stack<GameObject> stack))
         {
             stack = new Stack<GameObject>();
-            pool.Add(tag, stack);
+            pool.Add(name, stack);
         }
 
         if (stack.Contains(obj)) { return; }
 
-        // ¦³ªº¸Ü´N©ñ¦^¥h
+        // æœ‰çš„è©±å°±æ”¾å›å»
         stack.Push(obj);
     }
 }

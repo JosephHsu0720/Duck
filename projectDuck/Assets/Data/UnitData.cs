@@ -11,6 +11,7 @@ public class UnitInfo
     public int hp;
     public int atk;
     public int def;
+    public List<string> myBullet;
 }
 
 [CreateAssetMenu(fileName = "New Unit Data", menuName = "Unit Data", order = 2)]

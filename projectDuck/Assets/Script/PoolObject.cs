@@ -5,13 +5,11 @@ using UnityEngine;
 
 public class PoolObject : FollowObject
 {
-    public class MyBullets
-    {
-        public List<BulletData> BulletDatas;
-    }
-
+    public string objectName;
     public event Action<GameObject> RecycleEvent;
-    public string objectTag;
+
+    List<string> myBullet;
+    bool isSetUp = false;
 
     private void OnDrawGizmos()
     {
@@ -26,11 +24,33 @@ public class PoolObject : FollowObject
     //    }
     //}
 
-    public void SetUp(string tag, Transform target, Action<GameObject> destroyCB)
+    public void SetUp(string name, Data unitData, Transform target, Action<GameObject> destroyCB)
     {
-        objectTag = tag;
+        objectName = name;
         followTarget = target;
         RecycleEvent = destroyCB;
+
+        if (unitData != null)
+        {
+            moveSpeed = unitData.SPD;
+            myBullet = unitData.mybullet;
+        }
+
+        isSetUp = true;
+    }
+
+    //void SetData(Data unitData)
+    //{
+    //    index = unitData.index;
+    //    unitType = unitData.Type;
+    //    objame = unitData.name;
+    //    spd = unitData.SPD;
+    //    atk = unitData.ATK;
+    //    hp = unitData.HP;
+    //}
+
+    void ReloadBullet(List<string> bulletList)
+    {
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -46,7 +66,9 @@ public class PoolObject : FollowObject
 
     private void Update()
     {
+        if (isSetUp == false) return;
         FollowOn();
+
         //Vector3 dir = followTarget.position - transform.position;
         //transform.Translate(dir.normalized * moveSpeed * Time.deltaTime);
 
@@ -63,7 +85,6 @@ public class PoolObject : FollowObject
     //    Debug.Log(col.name);
     //    Recycle();
     //}
-
     public void Recycle()
     {
         RecycleEvent?.Invoke(gameObject);

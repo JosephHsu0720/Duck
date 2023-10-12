@@ -6,7 +6,7 @@ using UnityEngine;
 public class Data
 {
     public int index;
-    public UnitType Type;
+    public UnitType unitType;
     public string name;
 
     public float SPD;
