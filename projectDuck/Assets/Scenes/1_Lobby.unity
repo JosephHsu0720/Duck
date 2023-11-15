@@ -390,8 +390,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 272300159}
         m_TargetAssemblyTypeName: LobbyMode, Assembly-CSharp
-        m_MethodName: Btn_OpenUI
-        m_Mode: 5
+        m_MethodName: OpenGachaPage
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
