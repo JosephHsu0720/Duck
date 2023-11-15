@@ -164,4 +164,12 @@ public class LobbyMode : UIObject
     {
         UIManager.GetInstance().CloseUI(GameUI.CharaProfilePage);
     }
+    public void OpenGachaPage()
+    {
+        UIManager.GetInstance().OpenUI(GameUI.GachaPage);
+    }
+    public void CloseGachaPage()
+    {
+        UIManager.GetInstance().CloseUI(GameUI.GachaPage);
+    }
 }

@@ -1,64 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
+using UnityEngine.UI;
 
 public class CharaProfilePage : UIObject
 {
-    UnitDataList duckData; // 資料庫
-    List<ItemObject> currentDuckList = new List<ItemObject>(); // 我有的資料
-
-    public Transform duckRoot;
-    public GameObject duckPrefab;
+    public List<TabPage> tabPageList;
+    public TabPageType nowSelectTab;
 
     public override void OpenUI()
     {
+        foreach (TabPage tb in tabPageList)
+        {
+            tb.SetTabButtonCB(SelectTab);
+        }
+
+        SelectTab(nowSelectTab);
         base.OpenUI();
-
-        duckData = AssetDatabase.LoadAssetAtPath<UnitDataList>("Assets/Data/DuckData.asset");
-        //Debug.Log(duckData.name);
-        SetUp(duckData);
-    }
-
-    void SetUp(UnitDataList duckData)
-    {
-        List<Data> duckDatabase = duckData.dataList;    // 複製一份資料
-
-        List<ItemObject> oldObjs = currentDuckList;
-        if (oldObjs.Count > duckDatabase.Count)         // 刪除多餘資料
-        {
-            for (int d = 0; d < oldObjs.Count; d++)
-            {
-                if (d >= duckDatabase.Count)
-                {
-                    Destroy(oldObjs[d].gameObject);
-                }
-            }
-        }
-        currentDuckList = new List<ItemObject>();       // 清空舊資料
-
-        for (int d = 0; d < duckDatabase.Count; d++)
-        {
-            GameObject newDuck;
-            if (d < oldObjs.Count)                      // 如果先前有過這筆資料
-            {
-                newDuck = oldObjs[d].gameObject;
-            }
-            else
-            {
-                newDuck = Instantiate(duckPrefab, duckRoot);
-                // TODO: newDuck Add clickListener += (function);
-                newDuck.transform.localPosition = Vector3.zero;
-                newDuck.transform.localScale = Vector3.one;
-            }
-
-            newDuck.GetComponent<ItemObject>().ShowCharaData(duckDatabase[d], true);
-            currentDuckList.Add(newDuck.GetComponent<ItemObject>());
-        }
     }
 
     public void BtnClose()
     {
         CloseUI();
+    }
+
+    public void SelectTab(TabPageType type)
+    {
+        if (type == TabPageType.NONE)
+        {
+            tabPageList[0].OpenTab();
+            nowSelectTab = TabPageType.Duck;
+            return;
+        }
+        else if (nowSelectTab == type)
+        {
+            return;
+        }
+        tabPageList[(int)nowSelectTab].CloseTab();
+        tabPageList[(int)type].OpenTab();
+        nowSelectTab = type;
     }
 }
