@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     }
 
     public Dictionary<string, UIObject> UIPrefabs = new Dictionary<string, UIObject>();
+    public Transform uiRoot;
 
     [SerializeField]
     List<string> UIStack;
@@ -23,30 +24,25 @@ public class UIManager : MonoBehaviour
     {
         UIStack = new List<string>();
     }
-    public void OpenUI(string UIName, UIObject srcUI)
+    public void OpenUI(GameUI ui)
     {
-        if (UIPrefabs.ContainsKey(UIName)) // 有沒有 UI 資料
+        string uiName = ui.ToString();
+        if (UIPrefabs.ContainsKey(uiName))
         {
-            UIPrefabs[UIName].transform.SetAsLastSibling(); // UI 移到最下面
-            UIPrefabs[UIName].OpenUI(this, srcUI);
+            UIPrefabs[uiName].transform.SetAsLastSibling();
+            UIPrefabs[uiName].OpenUI();
 
-            /*int index = UIStack.IndexOf(UIName);
-            if (index == -1)
-            {
-                UIStack.Add(UIName);
-            }*/
             return;
         }
-
-        StartCoroutine(OpenUICoroutine(UIName, srcUI));
+        StartCoroutine(OpenUICoroutine(ui, uiName));
     }
 
-    IEnumerator OpenUICoroutine(string UIName, UIObject srcUI)
+    IEnumerator OpenUICoroutine(GameUI ui, string uiName)
     {
         // Open Block;
 
-        GameObject lobbyUIPrefab = Instantiate(Resources.Load<GameObject>(UIName));
-        lobbyUIPrefab.name = UIName;
+        GameObject lobbyUIPrefab = Instantiate(Resources.Load<GameObject>(uiName), uiRoot);
+        lobbyUIPrefab.name = uiName;
         // Set Parent Root;
         RectTransform rectTransform = lobbyUIPrefab.GetComponent<RectTransform>();
         if (rectTransform != null)
@@ -57,12 +53,25 @@ public class UIManager : MonoBehaviour
             rectTransform.localScale = Vector3.one;
         }
 
-        UIPrefabs[UIName] = lobbyUIPrefab.GetComponent<UIObject>();
-        UIStack.Add(UIName);
+        UIPrefabs[uiName] = lobbyUIPrefab.GetComponent<UIObject>();
+        UIStack.Add(uiName);
 
         yield return null;
         // Close Block
 
-        OpenUI(UIName, srcUI);
+        OpenUI(ui);
+    }
+
+    public void CloseUI(GameUI ui)
+    {
+        string uiName = ui.ToString();
+        if (UIPrefabs.ContainsKey(uiName))
+        {
+            UIPrefabs[uiName].CloseUI();
+        }
+        else
+        {
+            Debug.LogWarning("No uiPrefab: " + uiName + "exist.");
+        }
     }
 }

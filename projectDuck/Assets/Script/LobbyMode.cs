@@ -144,8 +144,24 @@ public class LobbyMode : UIObject
         Debug.Log("All data deleted");
     }
 
-    public void Btn_OpenUI(string uiName)
+    public void OpenSettings()
     {
-        OpenOtherUI(uiName);
+        UIManager.GetInstance().OpenUI(GameUI.Settings);
+    }
+    public void OpenLoading()
+    {
+        UIManager.GetInstance().OpenUI(GameUI.LoadingPage);
+    }
+    public void CloseLoading()
+    {
+        UIManager.GetInstance().CloseUI(GameUI.LoadingPage);
+    }
+    public void OpenCharaProfilePage()
+    {
+        UIManager.GetInstance().OpenUI(GameUI.CharaProfilePage);
+    }
+    public void CloseCharaProfilePage()
+    {
+        UIManager.GetInstance().CloseUI(GameUI.CharaProfilePage);
     }
 }

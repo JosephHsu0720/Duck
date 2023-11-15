@@ -11,9 +11,9 @@ public class CharaProfilePage : UIObject
     public Transform duckRoot;
     public GameObject duckPrefab;
 
-    public override void OpenUI(UIManager rUIManager, UIObject rSrcUI)
+    public override void OpenUI()
     {
-        base.OpenUI(rUIManager, rSrcUI);
+        base.OpenUI();
 
         duckData = AssetDatabase.LoadAssetAtPath<UnitDataList>("Assets/Data/DuckData.asset");
         //Debug.Log(duckData.name);

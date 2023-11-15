@@ -1572,6 +1572,7 @@ MonoBehaviour:
   nameText: {fileID: 816070021693638132}
   introText: {fileID: 6126977479645841135}
   duckImage: {fileID: 5991065863304017504}
+  orderText: {fileID: 0}
 --- !u!1 &6898832944696659851
 GameObject:
   m_ObjectHideFlags: 0

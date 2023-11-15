@@ -26,12 +26,6 @@ public class Settings : UIObject
         SetVolume();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void SetVolume()
     {
         // Slider
@@ -46,6 +40,6 @@ public class Settings : UIObject
         AudioManager.SetBGMVolume(BGM_volume);
         AudioManager.SetSEVolume(SE_volume);
 
-        Debug.Log("SetValue");
+        //Debug.Log("SetValue");
     }
 }

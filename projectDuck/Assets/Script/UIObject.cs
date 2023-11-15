@@ -5,14 +5,8 @@ using UnityEngine;
 
 public class UIObject : MonoBehaviour
 {
-    UIManager uiManager;    // 呼叫此 UI 的 Manager
-    UIObject srcUI;    // 呼叫此 UI 的 UI
-
-    public virtual void OpenUI(UIManager rUIManager, UIObject rSrcUI)
+    public virtual void OpenUI()
     {
-        uiManager = rUIManager;
-        srcUI = rSrcUI;
-
         gameObject.SetActive(true);
     }
     public virtual void RefreshUI()
@@ -23,10 +17,9 @@ public class UIObject : MonoBehaviour
     {
 
     }
-    public void OpenOtherUI(string uiName)
+    public void OpenOtherUI()
     {
-        uiManager = UIManager.GetInstance();
-        uiManager.OpenUI(uiName, this);
+
     }
     public void CloseUI()
     {

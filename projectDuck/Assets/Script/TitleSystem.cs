@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class TitleSystem : UIObject
 {
-
+    public void OpenSettings()
+    {
+        UIManager.GetInstance().OpenUI(GameUI.Settings);
+    }
 }
