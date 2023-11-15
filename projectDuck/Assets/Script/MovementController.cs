@@ -6,11 +6,11 @@ public class MovementController : MonoBehaviour
 {
     public Transform controlTarget;
 
-    public Vector2 moveH;           // ¦ì²¾¤è¦V(¤ô¥­)
-    public Vector2 moveV;           // ¦ì²¾¤è¦V(««ª½)
-    public Vector2 moveDir;         // Á`¦ì²¾¤è¦V
-    public Vector3 offset;          // °¾²¾¶q
-    public float moveSpeed;         // ¦ì²¾³t«×
+    public Vector2 moveH;           // ä½ç§»æ–¹å‘(æ°´å¹³)
+    public Vector2 moveV;           // ä½ç§»æ–¹å‘(å‚ç›´)
+    public Vector2 moveDir;         // ç¸½ä½ç§»æ–¹å‘
+    public Vector3 offset;          // åç§»é‡
+    public float moveSpeed;         // ä½ç§»é€Ÿåº¦
     [SerializeField] float moveVertical = 0;
     [SerializeField] float moveHorizontal = 0;
 
@@ -24,7 +24,7 @@ public class MovementController : MonoBehaviour
     {
         if (canMove)
         {
-            // ««ª½²¾°Ê
+            // å‚ç›´ç§»å‹•
             if (Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S))
             {
                 moveVertical = 0.1f;
@@ -37,7 +37,7 @@ public class MovementController : MonoBehaviour
             {
                 moveVertical = 0f;
             }
-            // ¤ô¥­²¾°Ê
+            // æ°´å¹³ç§»å‹•
             if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
             {
                 moveHorizontal = -0.1f;
@@ -50,7 +50,7 @@ public class MovementController : MonoBehaviour
             {
                 moveHorizontal = 0f;
             }
-            // ½Ä¨ë(Dash)
+            // è¡åˆº(Dash)
             if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
             {
                 if (!isDash)

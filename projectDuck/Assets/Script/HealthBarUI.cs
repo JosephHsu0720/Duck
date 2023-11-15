@@ -6,14 +6,14 @@ using DG.Tweening;
 
 public class HealthBarUI : MonoBehaviour
 {
-    public Image hpBarBackground;       // ¥Õ¦â­I´º
-    public Image hpBarEffectImg;        // ¯»¦âªº¯S®Ä¹Ï
-    public Image hpBar;                 // ¹ê»Ú¦å±ø
+    public Image hpBarBackground;       // ç™½è‰²èƒŒæ™¯
+    public Image hpBarEffectImg;        // ç²‰è‰²çš„ç‰¹æ•ˆåœ–
+    public Image hpBar;                 // å¯¦éš›è¡€æ¢
 
-    Vector2 hpBarSprite;                // ¦å±øªø¼e
+    Vector2 hpBarSprite;                // è¡€æ¢é•·å¯¬
 
     int maxHP;
-    float scaleRate;                    // ¦å¶q©M¦å±øªº¤ñ¨Ò
+    float scaleRate;                    // è¡€é‡å’Œè¡€æ¢çš„æ¯”ä¾‹
 
     public void Show(int hpBarValue)
     {
